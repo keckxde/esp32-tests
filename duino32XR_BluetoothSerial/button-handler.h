@@ -10,7 +10,7 @@
 
 class ButtonHandler{
   public:
-    uint8_t pinLeft   = 0;
+    uint8_t pinLeft   = 55;
     uint8_t pinMiddle = 1;
     uint8_t pinRight  = 2;
     

@@ -1,3 +1,4 @@
+#include "esp32-hal-gpio.h"
 #include "button-handler.h"
 
 ButtonHandler::ButtonHandler(uint8_t pinLeft, uint8_t pinMiddle, uint8_t pinRight)
@@ -9,31 +10,28 @@ ButtonHandler::ButtonHandler(uint8_t pinLeft, uint8_t pinMiddle, uint8_t pinRigh
   buttonLEFT = NULL;
   buttonCENTER = NULL;
 
-  pinMode(pinLeft, INPUT_PULLUP);
-  pinMode(pinMiddle, INPUT_PULLUP);
-  pinMode(pinRight, INPUT_PULLUP);
-
+  
   Serial.printf("ButtonHandler::ButtonHandler %d, %d, %d", pinLeft, pinMiddle, pinRight);
 }
 
 void ButtonHandler::begin() {
   Serial.printf("ButtonHandler::begin ");
 
+  pinMode(pinLeft, INPUT_PULLDOWN);
+  pinMode(pinMiddle, INPUT_PULLUP);
+  pinMode(pinRight, INPUT_PULLUP);
+
+
   // Initialize the Button OBjects with the correlated PINs
-  buttonRIGHT = new Button(pinRight); 
-  buttonRIGHT->begin();
   buttonLEFT = new Button(pinLeft);  
   buttonLEFT->begin();
+  buttonRIGHT = new Button(pinRight); 
+  buttonRIGHT->begin();
   buttonCENTER = new Button(pinMiddle);
   buttonCENTER->begin();
 }
 
 void ButtonHandler::loop() {
-  //Serial.printf("ButtonHandler::loop ");
-  if (buttonRIGHT->read() == Button::PRESSED) {
-    Serial.println("Button Right pressed");
-    // brightness();
-  }
   if (buttonRIGHT->released()) {
     Serial.println("Button Right released");
   }

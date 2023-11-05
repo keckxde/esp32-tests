@@ -3,8 +3,6 @@
 #include "show-button-handler.h"
 extern ShowButtonHandler Buttons;
 
-
-
 void cmd_bright(MyCommandParser::Argument *args, char *response) {
   Serial.print("BRIGHT int: ");
   int val = atoi(args[0].asString);

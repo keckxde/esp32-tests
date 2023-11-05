@@ -40,7 +40,7 @@ public:
   void loop() {
     //Serial.printf("ButtonHandler::loop ");
     if (type_d != type || bright_d != bright) {
-      Serial.printf("ShowPixelHandler::loop Changing Type %d, Brightness %d",type,bright);
+      Serial.printf("ShowPixelHandler::loop Changing Type %d, Brightness %d\n",type,bright);
       startShow(type, bright);
       type_d = type;
       bright_d = bright;

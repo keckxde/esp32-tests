@@ -15,13 +15,13 @@ public:
   void loop() {
     //Serial.printf("ButtonHandler::loop ");
     if (buttonRIGHT->read() == Button::PRESSED) {
-      Serial.println("ShotButtonHandler Right pressed");
+      Serial.println("ShowButtonHandler Right pressed");
       simBrightnessDown();
       delay(5);
     }
 
     if (buttonLEFT->read() == Button::PRESSED) {
-      Serial.println("ShotButtonHandler Left pressed");
+      Serial.println("ShowButtonHandler Left pressed");
       simBrightnessUp();
       delay(5);
     }
