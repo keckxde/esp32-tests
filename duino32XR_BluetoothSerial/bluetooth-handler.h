@@ -8,13 +8,18 @@
 #error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
 #endif
 
+// https://github.com/Uberi/Arduino-CommandParser
+#include <CommandParser.h>
+
+typedef CommandParser<> MyCommandParser;
+
 
 class BluetoothHandler{
   public:
-    int x = 1;
-    int y = 2;
+
     boolean confirmRequestPending = true;
     BluetoothSerial SerialBT;
+    MyCommandParser parser;
 
     BluetoothHandler(uint8_t uart_nr);
     void begin();
@@ -26,8 +31,6 @@ class BluetoothHandler{
 };
 
 
-//extern BluetoothSerial SerialBT;
-//extern boolean confirmRequestPending;
 extern BluetoothHandler BTHandler;
 
 #endif
